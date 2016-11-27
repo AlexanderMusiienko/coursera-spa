@@ -14,7 +14,7 @@
     $scope.check = function() {
       //filter empty items
       var arrayOfDishes = $scope.dishes.split(',').filter(function(value) {
-        return value != "";
+        return value != '';
       });
 
       if (arrayOfDishes.length == 0) {
@@ -24,10 +24,11 @@
       } else {
         arrayOfDishes.map(function(element) {
           //check at only whitespaces items
-          if (element.match(/^\s*$/g)) {
+          if (element.match(/^\s*$/g) !== null) {
+            console.log(element.match(/^\s*$/g));
             $scope.resultMsg = 'You have empty item at input field, please check it';
             $scope.boxClass = 'red';
-          } else if (arrayOfDishes.length !== 0 && arrayOfDishes.length <= 3) {
+          } else if (arrayOfDishes.length <= 3) {
             $scope.resultMsg = 'Enjoy!';
             $scope.boxClass = 'green';
           } else {
