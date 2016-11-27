@@ -1,0 +1,20 @@
+
+.normal {
+  color: #000;
+}
+
+.green {
+  color: #008000;
+  border: 1px solid #008000;
+  border-radius: 10px;
+  display: inline-block;
+  padding: 0 10px;
+}
+
+.red {
+  color: #ff2222;
+  border: 1px solid #ff2222;
+  border-radius: 10px;
+  display: inline-block;
+  padding: 0 10px;
+}
