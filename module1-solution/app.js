@@ -22,10 +22,9 @@
         $scope.boxClass = 'red';
 
       } else {
-        arrayOfDishes.map(function(element) {
+        arrayOfDishes.forEach(function(element) {
           //check at only whitespaces items
           if (element.match(/^\s*$/g) !== null) {
-            console.log(element.match(/^\s*$/g));
             $scope.resultMsg = 'You have empty item at input field, please check it';
             $scope.boxClass = 'red';
           } else if (arrayOfDishes.length <= 3) {
