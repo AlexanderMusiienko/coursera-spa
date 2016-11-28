@@ -16,6 +16,11 @@
       var arrayOfDishes = $scope.dishes.split(',').filter(function(value) {
         return value != '';
       });
+      var allWordsAreValid = true;
+
+      function checkWord(word) {
+        allWordsAreValid = (/^\s*$/.test(word) !== false) ? false : true;
+      };
 
       if (arrayOfDishes.length == 0) {
         $scope.resultMsg = 'Please enter data first';
@@ -24,7 +29,9 @@
       } else {
         arrayOfDishes.forEach(function(element) {
           //check at only whitespaces items
-          if (element.match(/^\s*$/g) !== null) {
+          console.log(checkWord(element));
+          if (checkWord(element) === false) {
+            console.log(allWordsAreValid+' new');
             $scope.resultMsg = 'You have empty item at input field, please check it';
             $scope.boxClass = 'red';
           } else if (arrayOfDishes.length <= 3) {
