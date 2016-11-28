@@ -19,7 +19,7 @@
       var allWordsAreValid = true;
 
       function checkWord(word) {
-        allWordsAreValid = (/^\s*$/.test(word) !== false) ? false : true;
+        return allWordsAreValid = /^\s*$/.test(word);
       };
 
       if (arrayOfDishes.length == 0) {
@@ -29,9 +29,9 @@
       } else {
         arrayOfDishes.forEach(function(element) {
           //check at only whitespaces items
-          console.log(checkWord(element));
-          if (checkWord(element) === false) {
-            console.log(allWordsAreValid+' new');
+          console.log(checkWord(element)+' old');
+          if (checkWord(element) !== false) {
+            console.log(checkWord(element)+' new');
             $scope.resultMsg = 'You have empty item at input field, please check it';
             $scope.boxClass = 'red';
           } else if (arrayOfDishes.length <= 3) {
