@@ -19,7 +19,7 @@
       var allWordsAreValid = true;
 
       function checkWord(word) {
-        return allWordsAreValid = /^\s*$/.test(word);
+        return !/^\s*$/.test(word);
       };
 
       if (arrayOfDishes.length == 0) {
@@ -27,21 +27,24 @@
         $scope.boxClass = 'red';
 
       } else {
-        arrayOfDishes.forEach(function(element) {
-          //check at only whitespaces items
-          console.log(checkWord(element)+' old');
-          if (checkWord(element) !== false) {
-            console.log(checkWord(element)+' new');
-            $scope.resultMsg = 'You have empty item at input field, please check it';
-            $scope.boxClass = 'red';
-          } else if (arrayOfDishes.length <= 3) {
-            $scope.resultMsg = 'Enjoy!';
-            $scope.boxClass = 'green';
-          } else {
-            $scope.resultMsg = 'Too much!';
-            $scope.boxClass = 'green';
+
+        arrayOfDishes.forEach(function(word) {
+          if (!checkWord(word)) {
+            allWordsAreValid = false;
           }
         });
+
+        //check at only whitespaces items
+        if (!allWordsAreValid) {
+          $scope.resultMsg = 'You have empty item at input field, please check it';
+          $scope.boxClass = 'red';
+        } else if (arrayOfDishes.length <= 3) {
+          $scope.resultMsg = 'Enjoy!';
+          $scope.boxClass = 'green';
+        } else {
+          $scope.resultMsg = 'Too much!';
+          $scope.boxClass = 'green';
+        }
       }
     }
   }
